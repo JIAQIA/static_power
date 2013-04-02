@@ -10,11 +10,13 @@ void power_static{
 	power = BO * p[power_num];
 	UAD_temp = UAD;
 	power_now = UAD_temp * p[n_temp];
-	if(power < power_now)
-		n_temp++;
+	if(power < power_now){
+		if(power_now - power > 0x0100)
+			n_temp++;
 	else if(power > power_now)
-		n_temp--;
-	power_duty = n_temp;
+		if(power - power_now > 0x0100)
+			n_temp--;
+	power_duty = n_temp;	//power_duty为软启动模块中的启动标志变量
 }
 
 int main(){
