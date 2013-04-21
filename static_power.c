@@ -10,7 +10,7 @@ void power_static{
 	power = BO * p[power_num];
 	UAD_temp = UAD;
 	power_now = UAD_temp * p[n_temp];
-	if(power < power_now){
+	if(power < power_now)
 		if(power_now - power > 0x0100)
 			n_temp++;
 	else if(power > power_now)
